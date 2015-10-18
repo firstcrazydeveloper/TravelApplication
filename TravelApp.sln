@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelAPPWCFService", "TravelAPPWCFService\TravelAPPWCFService.csproj", "{EC00BCDC-189B-4FA0-A01C-EB32AC30A10F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelAPPWebAPI", "TravelAPPWebAPI\TravelAPPWebAPI.csproj", "{828B0CF3-7A1F-4DD7-B795-C175C0E7A652}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelAPPDataLayer", "TravelAPPDataLayer\TravelAPPDataLayer.csproj", "{6DB5B932-CEE0-41E3-9BD7-7B743730F7F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelAPPBusinessLayer", "TravelAPPBusinessLayer\TravelAPPBusinessLayer.csproj", "{B24313CC-466E-46D1-9566-144C707DEC9B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelAPPCacheLayer", "TravelAPPCacheLayer\TravelAPPCacheLayer.csproj", "{4551A6A2-7250-4020-AB65-D4B790BC8485}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleApp", "SampleApp\SampleApp.csproj", "{A9CAEC88-50AA-4189-AFB3-C26FADFB983C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EC00BCDC-189B-4FA0-A01C-EB32AC30A10F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC00BCDC-189B-4FA0-A01C-EB32AC30A10F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC00BCDC-189B-4FA0-A01C-EB32AC30A10F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC00BCDC-189B-4FA0-A01C-EB32AC30A10F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{828B0CF3-7A1F-4DD7-B795-C175C0E7A652}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{828B0CF3-7A1F-4DD7-B795-C175C0E7A652}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{828B0CF3-7A1F-4DD7-B795-C175C0E7A652}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{828B0CF3-7A1F-4DD7-B795-C175C0E7A652}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DB5B932-CEE0-41E3-9BD7-7B743730F7F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DB5B932-CEE0-41E3-9BD7-7B743730F7F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DB5B932-CEE0-41E3-9BD7-7B743730F7F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DB5B932-CEE0-41E3-9BD7-7B743730F7F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B24313CC-466E-46D1-9566-144C707DEC9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B24313CC-466E-46D1-9566-144C707DEC9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B24313CC-466E-46D1-9566-144C707DEC9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B24313CC-466E-46D1-9566-144C707DEC9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4551A6A2-7250-4020-AB65-D4B790BC8485}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4551A6A2-7250-4020-AB65-D4B790BC8485}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4551A6A2-7250-4020-AB65-D4B790BC8485}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4551A6A2-7250-4020-AB65-D4B790BC8485}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9CAEC88-50AA-4189-AFB3-C26FADFB983C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9CAEC88-50AA-4189-AFB3-C26FADFB983C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9CAEC88-50AA-4189-AFB3-C26FADFB983C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9CAEC88-50AA-4189-AFB3-C26FADFB983C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

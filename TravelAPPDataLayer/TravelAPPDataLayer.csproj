@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6DB5B932-CEE0-41E3-9BD7-7B743730F7F4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TravelAPPDataLayer</RootNamespace>
+    <AssemblyName>TravelAPPDataLayer</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataObjects\Listing.cs" />
+    <Compile Include="EntityObjects\amenitiesTable.cs">
+      <DependentUpon>RentalHoliday.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityObjects\amenityFee.cs">
+      <DependentUpon>RentalHoliday.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityObjects\attractionsTable.cs">
+      <DependentUpon>RentalHoliday.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityObjects\availabilityTable.cs">
+      <DependentUpon>RentalHoliday.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityObjects\billingsTable.cs">
+      <DependentUpon>RentalHoliday.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityObjects\BlogComment.cs">
+      <DependentUpon>RentalHoliday.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityObjects\citiesTable.cs">
+      <DependentUpon>RentalHoliday.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityObjects\contactsTable.cs">
+      <DependentUpon>RentalHoliday.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityObjects\countriesTable.cs">
+      <DependentUpon>RentalHoliday.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityObjects\DomainName.cs">
+      <DependentUpon>RentalHoliday.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityObjects\enquiryTable.cs">
+      <DependentUpon>RentalHoliday.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityObjects\facilitiesData.cs">
+      <DependentUpon>RentalHoliday.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityObjects\facilitiesItemsData.cs">
+      <DependentUpon>RentalHoliday.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityObjects\GetAllDomainName_Result.cs">
+      <DependentUpon>RentalHoliday.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityObjects\GetAllpageDetailbyDid_Result.cs">
+      <DependentUpon>RentalHoliday.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityObjects\getalluserdetail_Result.cs">
+      <DependentUpon>RentalHoliday.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityObjects\GetpageDetailbyPid_Result.cs">
+      <DependentUpon>RentalHoliday.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityObjects\listingsImagesTable.cs">
+      <DependentUpon>RentalHoliday.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityObjects\listingsTable.cs">
+      <DependentUpon>RentalHoliday.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityObjects\ownersTable.cs">
+      <DependentUpon>RentalHoliday.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityObjects\PageDetail.cs">
+      <DependentUpon>RentalHoliday.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityObjects\policiesTable.cs">
+      <DependentUpon>RentalHoliday.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityObjects\PostBlog.cs">
+      <DependentUpon>RentalHoliday.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityObjects\promotionsTable.cs">
+      <DependentUpon>RentalHoliday.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityObjects\ratesDataTable.cs">
+      <DependentUpon>RentalHoliday.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityObjects\ratesTable.cs">
+      <DependentUpon>RentalHoliday.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityObjects\regionsTable.cs">
+      <DependentUpon>RentalHoliday.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityObjects\RentalHoliday.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RentalHoliday.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityObjects\RentalHoliday.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RentalHoliday.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityObjects\RentalHoliday.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RentalHoliday.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="EntityObjects\reviewsTable.cs">
+      <DependentUpon>RentalHoliday.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityObjects\roomsTable.cs">
+      <DependentUpon>RentalHoliday.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityObjects\sp_Search_Area_Result.cs">
+      <DependentUpon>RentalHoliday.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityObjects\statesTable.cs">
+      <DependentUpon>RentalHoliday.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityObjects\tbl_continents.cs">
+      <DependentUpon>RentalHoliday.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityObjects\travelersTable.cs">
+      <DependentUpon>RentalHoliday.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityObjects\userdetail.cs">
+      <DependentUpon>RentalHoliday.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityObjects\usersTable.cs">
+      <DependentUpon>RentalHoliday.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityObjects\usptBlogComment_Result.cs">
+      <DependentUpon>RentalHoliday.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityObjects\usptPostBlog_Result.cs">
+      <DependentUpon>RentalHoliday.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utility\Helper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="EntityObjects\RentalHoliday.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>RentalHoliday.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="EntityObjects\RentalHoliday.edmx.diagram">
+      <DependentUpon>RentalHoliday.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="EntityObjects\RentalHoliday.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>RentalHoliday.edmx</DependentUpon>
+      <LastGenOutput>RentalHoliday.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="EntityObjects\RentalHoliday.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>RentalHoliday.edmx</DependentUpon>
+      <LastGenOutput>RentalHoliday.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

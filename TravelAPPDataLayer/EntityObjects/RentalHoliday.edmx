@@ -1,0 +1,2193 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="RentalHolidayModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="amenitiesTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="amenities" Type="varchar" MaxLength="7000" />
+          <Property Name="amenitiesSize" Type="varchar" MaxLength="7000" />
+          <Property Name="maidService" Type="varchar" MaxLength="1000" />
+          <Property Name="listingID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="amenityFee">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="items" Type="varchar" MaxLength="500" />
+          <Property Name="fees" Type="varchar" MaxLength="500" />
+          <Property Name="feeTypes" Type="varchar" MaxLength="500" />
+          <Property Name="listingID" Type="int" />
+        </EntityType>
+        <EntityType Name="attractionsTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="attractions" Type="varchar" MaxLength="5000" />
+          <Property Name="distances" Type="varchar" MaxLength="5000" />
+          <Property Name="distanceTypes" Type="varchar" MaxLength="5000" />
+          <Property Name="description" Type="varchar" MaxLength="1000" />
+          <Property Name="listingID" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'BackupData.dbo.availabilityTable' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="availabilityTable">
+          <Key>
+            <PropertyRef Name="listingID" />
+          </Key>
+          <Property Name="date" Type="datetime" />
+          <Property Name="type" Type="varchar" MaxLength="20" />
+          <Property Name="listingID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="billingsTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="planID" Type="int" />
+          <Property Name="listingSize" Type="int" />
+          <Property Name="listingIDs" Type="varchar" MaxLength="3000" />
+          <Property Name="months" Type="int" />
+          <Property Name="discount" Type="float" />
+          <Property Name="price" Type="float" />
+          <Property Name="promotionCode" Type="int" />
+          <Property Name="ownerID" Type="int" Nullable="false" />
+          <Property Name="paymentStatus" Type="varchar" MaxLength="20" />
+          <Property Name="order_number" Type="int" />
+          <Property Name="currency_code" Type="varchar" MaxLength="50" />
+          <Property Name="invoice_id" Type="int" />
+          <Property Name="li_0_price" Type="float" />
+          <Property Name="total" Type="float" />
+          <Property Name="credit_card_processed" Type="varchar" MaxLength="50" />
+          <Property Name="pay_method" Type="varchar" MaxLength="200" />
+          <Property Name="country" Type="varchar" MaxLength="200" />
+          <Property Name="ip_country" Type="varchar" MaxLength="200" />
+          <Property Name="first_name" Type="varchar" MaxLength="200" />
+          <Property Name="last_name" Type="varchar" MaxLength="200" />
+          <Property Name="card_holder_name" Type="varchar" MaxLength="200" />
+          <Property Name="state" Type="varchar" MaxLength="200" />
+          <Property Name="city" Type="varchar" MaxLength="200" />
+          <Property Name="address" Type="varchar" MaxLength="200" />
+          <Property Name="address2" Type="varchar" MaxLength="200" />
+          <Property Name="postalCode" Type="varchar" MaxLength="50" />
+          <Property Name="phone" Type="varchar" MaxLength="200" />
+          <Property Name="phoneExtension" Type="varchar" MaxLength="50" />
+          <Property Name="email" Type="varchar" MaxLength="200" />
+          <Property Name="date" Type="datetime" />
+          <Property Name="Payment_reference_Id" Type="nvarchar" MaxLength="2000" />
+          <Property Name="Payment_type" Type="nvarchar" MaxLength="50" />
+          <Property Name="ListingPrice" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'BackupData.dbo.BlogComment' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="BlogComment">
+          <Key>
+            <PropertyRef Name="CommentID" />
+          </Key>
+          <Property Name="CommentID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BlogID" Type="bigint" />
+          <Property Name="Commant" Type="text" />
+          <Property Name="IsActive" Type="tinyint" />
+          <Property Name="CommentOn" Type="varchar" MaxLength="500" />
+          <Property Name="CommentBy" Type="varchar" MaxLength="500" />
+          <Property Name="DataAdded" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="citiesTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="code" Type="varchar" MaxLength="10" />
+          <Property Name="type" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="contactsTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="firstName" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="lastName" Type="varchar" MaxLength="150" />
+          <Property Name="image" Type="varchar" MaxLength="200" />
+          <Property Name="imageShow" Type="bit" Nullable="false" />
+          <Property Name="address" Type="varchar" MaxLength="300" />
+          <Property Name="zip" Type="varchar" MaxLength="20" />
+          <Property Name="continent" Type="varchar" MaxLength="20" />
+          <Property Name="country" Type="int" />
+          <Property Name="state" Type="int" />
+          <Property Name="region" Type="int" />
+          <Property Name="city" Type="int" />
+          <Property Name="primaryPhone" Type="varchar" MaxLength="20" />
+          <Property Name="alternatePhone" Type="varchar" MaxLength="20" />
+          <Property Name="callTime" Type="varchar" MaxLength="20" />
+          <Property Name="fax" Type="varchar" MaxLength="20" />
+          <Property Name="timeZone" Type="varchar" MaxLength="200" />
+          <Property Name="language" Type="varchar" MaxLength="300" />
+          <Property Name="aboutMe" Type="varchar" MaxLength="2000" />
+          <Property Name="ownerID" Type="int" Nullable="false" />
+          <Property Name="status" Type="bit" Nullable="false" />
+          <Property Name="profileCount" Type="int" />
+        </EntityType>
+        <EntityType Name="countriesTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="80" />
+          <Property Name="type" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="DomainName">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DomainName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="enquiryTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="150" />
+          <Property Name="email" Type="varchar" MaxLength="150" />
+          <Property Name="country" Type="int" />
+          <Property Name="phone" Type="varchar" MaxLength="20" />
+          <Property Name="arrival" Type="smalldatetime" />
+          <Property Name="departure" Type="smalldatetime" />
+          <Property Name="adults" Type="int" />
+          <Property Name="children" Type="int" />
+          <Property Name="message" Type="varchar" MaxLength="500" />
+          <Property Name="listingID" Type="int" Nullable="false" />
+          <Property Name="date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="facilitiesData">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="200" />
+          <Property Name="type" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="facilitiesItemsData">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="200" />
+          <Property Name="type" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="listingsImagesTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="image" Type="varchar" MaxLength="150" />
+          <Property Name="title" Type="varchar" MaxLength="500" />
+          <Property Name="description" Type="varchar" MaxLength="500" />
+          <Property Name="defaultImage" Type="bit" />
+          <Property Name="orderNo" Type="int" />
+          <Property Name="type" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'BackupData.dbo.listingsTable' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="listingsTable">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="status" />
+            <PropertyRef Name="date" />
+            <PropertyRef Name="dateUpdate" />
+            <PropertyRef Name="addedBy" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="300" />
+          <Property Name="continent" Type="varchar" MaxLength="30" />
+          <Property Name="country" Type="int" />
+          <Property Name="state" Type="int" />
+          <Property Name="region" Type="int" />
+          <Property Name="city" Type="int" />
+          <Property Name="address" Type="varchar" MaxLength="300" />
+          <Property Name="zip" Type="varchar" MaxLength="20" />
+          <Property Name="latitude" Type="varchar" MaxLength="50" />
+          <Property Name="longitude" Type="varchar" MaxLength="50" />
+          <Property Name="bedrooms" Type="int" />
+          <Property Name="sleeps" Type="int" />
+          <Property Name="bathrooms" Type="decimal" Precision="18" Scale="1" />
+          <Property Name="minStay" Type="varchar" MaxLength="50" />
+          <Property Name="propertyType" Type="varchar" MaxLength="50" />
+          <Property Name="locationType" Type="varchar" MaxLength="150" />
+          <Property Name="entrance" Type="int" />
+          <Property Name="timeZone" Type="varchar" MaxLength="50" />
+          <Property Name="description" Type="varchar" MaxLength="6000" />
+          <Property Name="paymentStatus" Type="varchar" MaxLength="20" />
+          <Property Name="coastBeach" Type="varchar" MaxLength="600" />
+          <Property Name="golf" Type="varchar" MaxLength="600" />
+          <Property Name="specialInterest" Type="varchar" MaxLength="600" />
+          <Property Name="howReachThere" Type="varchar" MaxLength="600" />
+          <Property Name="featured" Type="bit" />
+          <Property Name="topTen" Type="bit" />
+          <Property Name="metaTitle" Type="varchar" MaxLength="300" />
+          <Property Name="metaKeyword" Type="varchar" MaxLength="500" />
+          <Property Name="metaDescription" Type="varchar" MaxLength="500" />
+          <Property Name="status" Type="bit" Nullable="false" />
+          <Property Name="date" Type="datetime" Nullable="false" />
+          <Property Name="dateUpdate" Type="datetime" Nullable="false" />
+          <Property Name="addedBy" Type="int" Nullable="false" />
+          <Property Name="roomDescription" Type="varchar" MaxLength="6000" />
+        </EntityType>
+        <EntityType Name="ownersTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="status" Type="bit" Nullable="false" />
+          <Property Name="date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'BackupData.dbo.PageDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="PageDetails">
+          <Key>
+            <PropertyRef Name="PID" />
+            <PropertyRef Name="DomainID" />
+            <PropertyRef Name="PageName" />
+            <PropertyRef Name="Title" />
+            <PropertyRef Name="Keywords" />
+            <PropertyRef Name="Description" />
+            <PropertyRef Name="Dated" />
+          </Key>
+          <Property Name="PID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DomainID" Type="int" Nullable="false" />
+          <Property Name="PageName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Keywords" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Dated" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="policiesTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="paymentPolicy" Type="varchar" MaxLength="1500" />
+          <Property Name="callectionPolicy" Type="varchar" MaxLength="1500" />
+          <Property Name="rules" Type="varchar" MaxLength="1500" />
+          <Property Name="listingID" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'BackupData.dbo.PostBlog' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="PostBlog">
+          <Key>
+            <PropertyRef Name="BlogID" />
+          </Key>
+          <Property Name="BlogID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BlogTitle" Type="varchar" MaxLength="200" />
+          <Property Name="BlogSDescription" Type="varchar" MaxLength="500" />
+          <Property Name="BlogBody" Type="text" />
+          <Property Name="PageKeword" Type="varchar" MaxLength="300" />
+          <Property Name="PageDescription" Type="varchar" MaxLength="500" />
+          <Property Name="IsPublish" Type="tinyint" />
+          <Property Name="IsActive" Type="tinyint" />
+          <Property Name="DateAdded" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="promotionsTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="planID" Type="int" />
+          <Property Name="code" Type="varchar" MaxLength="30" />
+          <Property Name="discount" Type="int" />
+          <Property Name="months" Type="int" />
+          <Property Name="amount" Type="float" />
+          <Property Name="startDate" Type="datetime" />
+          <Property Name="endDate" Type="datetime" />
+          <Property Name="title" Type="varchar" MaxLength="300" />
+          <Property Name="description" Type="varchar" MaxLength="1500" />
+          <Property Name="status" Type="bit" />
+        </EntityType>
+        <EntityType Name="ratesDataTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="200" />
+          <Property Name="beginDate" Type="datetime" />
+          <Property Name="endDate" Type="datetime" />
+          <Property Name="weekNight" Type="float" />
+          <Property Name="weekendNight" Type="float" />
+          <Property Name="weekly" Type="float" />
+          <Property Name="monthly" Type="float" />
+          <Property Name="listingID" Type="int" Nullable="false" />
+          <Property Name="weekNightTemp" Type="float" Nullable="false" />
+          <Property Name="weekendNightTemp" Type="float" Nullable="false" />
+          <Property Name="weeklyTemp" Type="float" Nullable="false" />
+          <Property Name="monthlyTemp" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ratesTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="currency" Type="varchar" MaxLength="50" />
+          <Property Name="standardOccupancy" Type="int" />
+          <Property Name="maxOccupancy" Type="int" />
+          <Property Name="extraPersonRate" Type="int" />
+          <Property Name="checkInTime" Type="varchar" MaxLength="50" />
+          <Property Name="checkOutTime" Type="varchar" MaxLength="50" />
+          <Property Name="paymentOptions" Type="varchar" MaxLength="500" />
+          <Property Name="describeRates" Type="varchar" MaxLength="700" />
+          <Property Name="listingID" Type="int" />
+        </EntityType>
+        <EntityType Name="regionsTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="100" />
+          <Property Name="type" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="reviewsTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="300" />
+          <Property Name="review" Type="varchar" MaxLength="1000" />
+          <Property Name="rating" Type="float" />
+          <Property Name="arrivalDate" Type="date" />
+          <Property Name="listingID" Type="int" Nullable="false" />
+          <Property Name="travelerID" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="status" Type="bit" Nullable="false" />
+          <Property Name="date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="roomsTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="type" Type="varchar" MaxLength="100" />
+          <Property Name="name" Type="varchar" MaxLength="150" />
+          <Property Name="floor" Type="int" />
+          <Property Name="entrance" Type="int" />
+          <Property Name="description" Type="varchar" MaxLength="500" />
+          <Property Name="listingID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="statesTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="type" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_continents">
+          <Key>
+            <PropertyRef Name="continentId" />
+          </Key>
+          <Property Name="continentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="continent" Type="varchar" MaxLength="100" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="travelersTable">
+          <Key>
+            <PropertyRef Name="email" />
+          </Key>
+          <Property Name="email" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="150" />
+          <Property Name="nickname" Type="varchar" MaxLength="150" />
+          <Property Name="phone" Type="varchar" MaxLength="20" />
+          <Property Name="country" Type="int" />
+          <Property Name="address" Type="varchar" MaxLength="300" />
+          <Property Name="listings" Type="varchar" MaxLength="1000" />
+          <Property Name="status" Type="bit" Nullable="false" />
+          <Property Name="addDate" Type="datetime" Nullable="false" />
+          <Property Name="updateDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="userdetail">
+          <Key>
+            <PropertyRef Name="userid" />
+          </Key>
+          <Property Name="userid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="loginid" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="roal" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="usersTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="type" Type="int" Nullable="false" />
+          <Property Name="code" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="status" Type="bit" Nullable="false" />
+          <Property Name="date" Type="datetime" Nullable="false" />
+          <Property Name="updateDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'BackupData.rendholiday.listingsImagesTable_bak' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <Function Name="adddomain" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="domainname" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="addPage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="domainid" Type="int" Mode="In" />
+          <Parameter Name="pagename" Type="varchar" Mode="In" />
+          <Parameter Name="title" Type="varchar" Mode="In" />
+          <Parameter Name="keyword" Type="varchar" Mode="In" />
+          <Parameter Name="description" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="adduser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="loginid" Type="varchar" Mode="In" />
+          <Parameter Name="pwd" Type="varchar" Mode="In" />
+          <Parameter Name="roal" Type="varchar" Mode="In" />
+          <Parameter Name="status" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DeletePageDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Pid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetAllDomainName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetAllpageDetailbyDid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="did" Type="int" Mode="In" />
+        </Function>
+        <Function Name="getalluserdetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetpageDetailbyPid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Pid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_Insert_AmenitiesTable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="amenities" Type="varchar" Mode="In" />
+          <Parameter Name="amenitiesSize" Type="varchar" Mode="In" />
+          <Parameter Name="maidService" Type="varchar" Mode="In" />
+          <Parameter Name="listingID" Type="int" Mode="In" />
+          <Parameter Name="Id" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="sp_Insert_AmenityFee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="items" Type="varchar" Mode="In" />
+          <Parameter Name="fees" Type="varchar" Mode="In" />
+          <Parameter Name="feeTypes" Type="varchar" Mode="In" />
+          <Parameter Name="listingID" Type="int" Mode="In" />
+          <Parameter Name="Id" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="sp_Insert_attractionsTable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="attractions" Type="varchar" Mode="In" />
+          <Parameter Name="distances" Type="varchar" Mode="In" />
+          <Parameter Name="distanceTypes" Type="varchar" Mode="In" />
+          <Parameter Name="description" Type="varchar" Mode="In" />
+          <Parameter Name="listingID" Type="int" Mode="In" />
+          <Parameter Name="Id" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="sp_Insert_billingsTable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="planID" Type="int" Mode="In" />
+          <Parameter Name="listingSize" Type="int" Mode="In" />
+          <Parameter Name="listingIDs" Type="varchar" Mode="In" />
+          <Parameter Name="months" Type="int" Mode="In" />
+          <Parameter Name="discount" Type="float" Mode="In" />
+          <Parameter Name="ListingPrice" Type="int" Mode="In" />
+          <Parameter Name="price" Type="float" Mode="In" />
+          <Parameter Name="promotionCode" Type="int" Mode="In" />
+          <Parameter Name="ownerID" Type="int" Mode="In" />
+          <Parameter Name="paymentStatus" Type="varchar" Mode="In" />
+          <Parameter Name="country" Type="varchar" Mode="In" />
+          <Parameter Name="card_holder_name" Type="varchar" Mode="In" />
+          <Parameter Name="state" Type="varchar" Mode="In" />
+          <Parameter Name="city" Type="varchar" Mode="In" />
+          <Parameter Name="address" Type="varchar" Mode="In" />
+          <Parameter Name="address2" Type="varchar" Mode="In" />
+          <Parameter Name="postalCode" Type="varchar" Mode="In" />
+          <Parameter Name="phone" Type="varchar" Mode="In" />
+          <Parameter Name="email" Type="varchar" Mode="In" />
+          <Parameter Name="date" Type="datetime" Mode="In" />
+          <Parameter Name="Payment_reference_Id" Type="nvarchar" Mode="In" />
+          <Parameter Name="Payment_type" Type="nvarchar" Mode="In" />
+          <Parameter Name="Id" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="sp_Insert_ListingTable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="name" Type="varchar" Mode="In" />
+          <Parameter Name="continent" Type="varchar" Mode="In" />
+          <Parameter Name="country" Type="int" Mode="In" />
+          <Parameter Name="state" Type="int" Mode="In" />
+          <Parameter Name="region" Type="int" Mode="In" />
+          <Parameter Name="city" Type="int" Mode="In" />
+          <Parameter Name="address" Type="varchar" Mode="In" />
+          <Parameter Name="zip" Type="varchar" Mode="In" />
+          <Parameter Name="latitude" Type="varchar" Mode="In" />
+          <Parameter Name="longitude" Type="varchar" Mode="In" />
+          <Parameter Name="bedrooms" Type="int" Mode="In" />
+          <Parameter Name="bathrooms" Type="decimal" Mode="In" />
+          <Parameter Name="minStay" Type="varchar" Mode="In" />
+          <Parameter Name="propertyType" Type="varchar" Mode="In" />
+          <Parameter Name="locationType" Type="varchar" Mode="In" />
+          <Parameter Name="entrance" Type="int" Mode="In" />
+          <Parameter Name="timeZone" Type="varchar" Mode="In" />
+          <Parameter Name="description" Type="varchar" Mode="In" />
+          <Parameter Name="paymentStatus" Type="varchar" Mode="In" />
+          <Parameter Name="status" Type="bit" Mode="In" />
+          <Parameter Name="date" Type="datetime" Mode="In" />
+          <Parameter Name="dateUpdate" Type="datetime" Mode="In" />
+          <Parameter Name="addedBy" Type="int" Mode="In" />
+          <Parameter Name="roomDescription" Type="varchar" Mode="In" />
+          <Parameter Name="metaTitle" Type="varchar" Mode="In" />
+          <Parameter Name="metaKeyword" Type="varchar" Mode="In" />
+          <Parameter Name="metaDescription" Type="varchar" Mode="In" />
+          <Parameter Name="coastBeach" Type="varchar" Mode="In" />
+          <Parameter Name="golf" Type="varchar" Mode="In" />
+          <Parameter Name="specialInterest" Type="varchar" Mode="In" />
+          <Parameter Name="howReachThere" Type="varchar" Mode="In" />
+          <Parameter Name="featured" Type="bit" Mode="In" />
+          <Parameter Name="topTen" Type="bit" Mode="In" />
+          <Parameter Name="sleeps" Type="int" Mode="In" />
+          <Parameter Name="Id" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="sp_Insert_policiesTable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="paymentPolicy" Type="varchar" Mode="In" />
+          <Parameter Name="callectionPolicy" Type="varchar" Mode="In" />
+          <Parameter Name="rules" Type="varchar" Mode="In" />
+          <Parameter Name="listingID" Type="int" Mode="In" />
+          <Parameter Name="Id" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="sp_Insert_ratesDataTable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="name" Type="varchar" Mode="In" />
+          <Parameter Name="beginDate" Type="datetime" Mode="In" />
+          <Parameter Name="endDate" Type="datetime" Mode="In" />
+          <Parameter Name="weekNight" Type="float" Mode="In" />
+          <Parameter Name="weekendNight" Type="float" Mode="In" />
+          <Parameter Name="weekly" Type="float" Mode="In" />
+          <Parameter Name="monthly" Type="float" Mode="In" />
+          <Parameter Name="weekNightTemp" Type="float" Mode="In" />
+          <Parameter Name="weekendNightTemp" Type="float" Mode="In" />
+          <Parameter Name="weeklyTemp" Type="float" Mode="In" />
+          <Parameter Name="monthlyTemp" Type="float" Mode="In" />
+          <Parameter Name="listingID" Type="int" Mode="In" />
+          <Parameter Name="Id" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="sp_Insert_ratesTable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="currency" Type="varchar" Mode="In" />
+          <Parameter Name="standardOccupancy" Type="int" Mode="In" />
+          <Parameter Name="maxOccupancy" Type="int" Mode="In" />
+          <Parameter Name="extraPersonRate" Type="int" Mode="In" />
+          <Parameter Name="checkInTime" Type="varchar" Mode="In" />
+          <Parameter Name="checkOutTime" Type="varchar" Mode="In" />
+          <Parameter Name="paymentOptions" Type="varchar" Mode="In" />
+          <Parameter Name="describeRates" Type="varchar" Mode="In" />
+          <Parameter Name="listingID" Type="int" Mode="In" />
+          <Parameter Name="Id" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="sp_Search_Area" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Keywords" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_Update_AmenitiesTable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="amenities" Type="varchar" Mode="In" />
+          <Parameter Name="amenitiesSize" Type="varchar" Mode="In" />
+          <Parameter Name="maidService" Type="varchar" Mode="In" />
+          <Parameter Name="listingID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_Update_AmenityFee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="items" Type="varchar" Mode="In" />
+          <Parameter Name="fees" Type="varchar" Mode="In" />
+          <Parameter Name="feeTypes" Type="varchar" Mode="In" />
+          <Parameter Name="listingID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_Update_attractionsTable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="attractions" Type="varchar" Mode="In" />
+          <Parameter Name="distances" Type="varchar" Mode="In" />
+          <Parameter Name="distanceTypes" Type="varchar" Mode="In" />
+          <Parameter Name="description" Type="varchar" Mode="In" />
+          <Parameter Name="listingID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_Update_ListingTable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="name" Type="varchar" Mode="In" />
+          <Parameter Name="continent" Type="varchar" Mode="In" />
+          <Parameter Name="country" Type="int" Mode="In" />
+          <Parameter Name="state" Type="int" Mode="In" />
+          <Parameter Name="region" Type="int" Mode="In" />
+          <Parameter Name="city" Type="int" Mode="In" />
+          <Parameter Name="address" Type="varchar" Mode="In" />
+          <Parameter Name="zip" Type="varchar" Mode="In" />
+          <Parameter Name="latitude" Type="varchar" Mode="In" />
+          <Parameter Name="longitude" Type="varchar" Mode="In" />
+          <Parameter Name="bedrooms" Type="int" Mode="In" />
+          <Parameter Name="bathrooms" Type="decimal" Mode="In" />
+          <Parameter Name="minStay" Type="varchar" Mode="In" />
+          <Parameter Name="propertyType" Type="varchar" Mode="In" />
+          <Parameter Name="locationType" Type="varchar" Mode="In" />
+          <Parameter Name="entrance" Type="int" Mode="In" />
+          <Parameter Name="timeZone" Type="varchar" Mode="In" />
+          <Parameter Name="description" Type="varchar" Mode="In" />
+          <Parameter Name="paymentStatus" Type="varchar" Mode="In" />
+          <Parameter Name="status" Type="bit" Mode="In" />
+          <Parameter Name="date" Type="datetime" Mode="In" />
+          <Parameter Name="dateUpdate" Type="datetime" Mode="In" />
+          <Parameter Name="roomDescription" Type="varchar" Mode="In" />
+          <Parameter Name="metaTitle" Type="varchar" Mode="In" />
+          <Parameter Name="metaKeyword" Type="varchar" Mode="In" />
+          <Parameter Name="metaDescription" Type="varchar" Mode="In" />
+          <Parameter Name="coastBeach" Type="varchar" Mode="In" />
+          <Parameter Name="golf" Type="varchar" Mode="In" />
+          <Parameter Name="specialInterest" Type="varchar" Mode="In" />
+          <Parameter Name="howReachThere" Type="varchar" Mode="In" />
+          <Parameter Name="featured" Type="bit" Mode="In" />
+          <Parameter Name="topTen" Type="bit" Mode="In" />
+          <Parameter Name="sleeps" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_Update_policiesTable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="paymentPolicy" Type="varchar" Mode="In" />
+          <Parameter Name="callectionPolicy" Type="varchar" Mode="In" />
+          <Parameter Name="rules" Type="varchar" Mode="In" />
+          <Parameter Name="listingID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_Update_ratesDataTable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="name" Type="varchar" Mode="In" />
+          <Parameter Name="beginDate" Type="datetime" Mode="In" />
+          <Parameter Name="endDate" Type="datetime" Mode="In" />
+          <Parameter Name="weekNight" Type="float" Mode="In" />
+          <Parameter Name="weekendNight" Type="float" Mode="In" />
+          <Parameter Name="weekly" Type="float" Mode="In" />
+          <Parameter Name="monthly" Type="float" Mode="In" />
+          <Parameter Name="weekNightTemp" Type="float" Mode="In" />
+          <Parameter Name="weekendNightTemp" Type="float" Mode="In" />
+          <Parameter Name="weeklyTemp" Type="float" Mode="In" />
+          <Parameter Name="monthlyTemp" Type="float" Mode="In" />
+          <Parameter Name="listingID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_Update_ratesTable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="currency" Type="varchar" Mode="In" />
+          <Parameter Name="standardOccupancy" Type="int" Mode="In" />
+          <Parameter Name="maxOccupancy" Type="int" Mode="In" />
+          <Parameter Name="extraPersonRate" Type="int" Mode="In" />
+          <Parameter Name="checkInTime" Type="varchar" Mode="In" />
+          <Parameter Name="checkOutTime" Type="varchar" Mode="In" />
+          <Parameter Name="paymentOptions" Type="varchar" Mode="In" />
+          <Parameter Name="describeRates" Type="varchar" Mode="In" />
+          <Parameter Name="listingID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="updatePage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pageid" Type="int" Mode="In" />
+          <Parameter Name="domainid" Type="int" Mode="In" />
+          <Parameter Name="pagename" Type="varchar" Mode="In" />
+          <Parameter Name="title" Type="varchar" Mode="In" />
+          <Parameter Name="keyword" Type="varchar" Mode="In" />
+          <Parameter Name="description" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usptBlogComment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="uType" Type="char" Mode="In" />
+          <Parameter Name="CommentID" Type="bigint" Mode="In" />
+          <Parameter Name="BlogID" Type="bigint" Mode="In" />
+          <Parameter Name="Commant" Type="text" Mode="In" />
+          <Parameter Name="IsActive" Type="tinyint" Mode="In" />
+          <Parameter Name="CommentOn" Type="varchar" Mode="In" />
+          <Parameter Name="CommentBy" Type="varchar" Mode="In" />
+          <Parameter Name="DataAdded" Type="smalldatetime" Mode="In" />
+          <Parameter Name="PageName" Type="varchar" Mode="In" />
+          <Parameter Name="ClsName" Type="varchar" Mode="In" />
+          <Parameter Name="FnName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usptPostBlog" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="uType" Type="char" Mode="In" />
+          <Parameter Name="BlogID" Type="bigint" Mode="In" />
+          <Parameter Name="BlogTitle" Type="varchar" Mode="In" />
+          <Parameter Name="BlogSDescription" Type="varchar" Mode="In" />
+          <Parameter Name="BlogBody" Type="text" Mode="In" />
+          <Parameter Name="PageKeword" Type="varchar" Mode="In" />
+          <Parameter Name="PageDescription" Type="varchar" Mode="In" />
+          <Parameter Name="IsPublish" Type="tinyint" Mode="In" />
+          <Parameter Name="IsActive" Type="tinyint" Mode="In" />
+          <Parameter Name="DateAdded" Type="smalldatetime" Mode="In" />
+          <Parameter Name="PageName" Type="varchar" Mode="In" />
+          <Parameter Name="ClsName" Type="varchar" Mode="In" />
+          <Parameter Name="FnName" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="RentalHolidayModelStoreContainer">
+          <EntitySet Name="amenitiesTable" EntityType="Self.amenitiesTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="amenityFee" EntityType="Self.amenityFee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="attractionsTable" EntityType="Self.attractionsTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="billingsTable" EntityType="Self.billingsTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="citiesTable" EntityType="Self.citiesTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="contactsTable" EntityType="Self.contactsTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="countriesTable" EntityType="Self.countriesTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DomainName" EntityType="Self.DomainName" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="enquiryTable" EntityType="Self.enquiryTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="facilitiesData" EntityType="Self.facilitiesData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="facilitiesItemsData" EntityType="Self.facilitiesItemsData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="listingsImagesTable" EntityType="Self.listingsImagesTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ownersTable" EntityType="Self.ownersTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="policiesTable" EntityType="Self.policiesTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="promotionsTable" EntityType="Self.promotionsTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ratesDataTable" EntityType="Self.ratesDataTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ratesTable" EntityType="Self.ratesTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="regionsTable" EntityType="Self.regionsTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="reviewsTable" EntityType="Self.reviewsTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="roomsTable" EntityType="Self.roomsTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="statesTable" EntityType="Self.statesTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_continents" EntityType="Self.tbl_continents" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="travelersTable" EntityType="Self.travelersTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="userdetail" EntityType="Self.userdetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="usersTable" EntityType="Self.usersTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="availabilityTable" EntityType="Self.availabilityTable" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [availabilityTable].[date] AS [date], 
+    [availabilityTable].[type] AS [type], 
+    [availabilityTable].[listingID] AS [listingID]
+    FROM [dbo].[availabilityTable] AS [availabilityTable]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="BlogComment" EntityType="Self.BlogComment" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [BlogComment].[CommentID] AS [CommentID], 
+    [BlogComment].[BlogID] AS [BlogID], 
+    [BlogComment].[Commant] AS [Commant], 
+    [BlogComment].[IsActive] AS [IsActive], 
+    [BlogComment].[CommentOn] AS [CommentOn], 
+    [BlogComment].[CommentBy] AS [CommentBy], 
+    [BlogComment].[DataAdded] AS [DataAdded]
+    FROM [dbo].[BlogComment] AS [BlogComment]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="listingsTable" EntityType="Self.listingsTable" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [listingsTable].[id] AS [id], 
+    [listingsTable].[name] AS [name], 
+    [listingsTable].[continent] AS [continent], 
+    [listingsTable].[country] AS [country], 
+    [listingsTable].[state] AS [state], 
+    [listingsTable].[region] AS [region], 
+    [listingsTable].[city] AS [city], 
+    [listingsTable].[address] AS [address], 
+    [listingsTable].[zip] AS [zip], 
+    [listingsTable].[latitude] AS [latitude], 
+    [listingsTable].[longitude] AS [longitude], 
+    [listingsTable].[bedrooms] AS [bedrooms], 
+    [listingsTable].[sleeps] AS [sleeps], 
+    [listingsTable].[bathrooms] AS [bathrooms], 
+    [listingsTable].[minStay] AS [minStay], 
+    [listingsTable].[propertyType] AS [propertyType], 
+    [listingsTable].[locationType] AS [locationType], 
+    [listingsTable].[entrance] AS [entrance], 
+    [listingsTable].[timeZone] AS [timeZone], 
+    [listingsTable].[description] AS [description], 
+    [listingsTable].[paymentStatus] AS [paymentStatus], 
+    [listingsTable].[coastBeach] AS [coastBeach], 
+    [listingsTable].[golf] AS [golf], 
+    [listingsTable].[specialInterest] AS [specialInterest], 
+    [listingsTable].[howReachThere] AS [howReachThere], 
+    [listingsTable].[featured] AS [featured], 
+    [listingsTable].[topTen] AS [topTen], 
+    [listingsTable].[metaTitle] AS [metaTitle], 
+    [listingsTable].[metaKeyword] AS [metaKeyword], 
+    [listingsTable].[metaDescription] AS [metaDescription], 
+    [listingsTable].[status] AS [status], 
+    [listingsTable].[date] AS [date], 
+    [listingsTable].[dateUpdate] AS [dateUpdate], 
+    [listingsTable].[addedBy] AS [addedBy], 
+    [listingsTable].[roomDescription] AS [roomDescription]
+    FROM [dbo].[listingsTable] AS [listingsTable]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PageDetails" EntityType="Self.PageDetails" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [PageDetails].[PID] AS [PID], 
+    [PageDetails].[DomainID] AS [DomainID], 
+    [PageDetails].[PageName] AS [PageName], 
+    [PageDetails].[Title] AS [Title], 
+    [PageDetails].[Keywords] AS [Keywords], 
+    [PageDetails].[Description] AS [Description], 
+    [PageDetails].[Dated] AS [Dated]
+    FROM [dbo].[PageDetails] AS [PageDetails]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PostBlog" EntityType="Self.PostBlog" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [PostBlog].[BlogID] AS [BlogID], 
+    [PostBlog].[BlogTitle] AS [BlogTitle], 
+    [PostBlog].[BlogSDescription] AS [BlogSDescription], 
+    [PostBlog].[BlogBody] AS [BlogBody], 
+    [PostBlog].[PageKeword] AS [PageKeword], 
+    [PostBlog].[PageDescription] AS [PageDescription], 
+    [PostBlog].[IsPublish] AS [IsPublish], 
+    [PostBlog].[IsActive] AS [IsActive], 
+    [PostBlog].[DateAdded] AS [DateAdded]
+    FROM [dbo].[PostBlog] AS [PostBlog]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RentalHolidayModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="amenitiesTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="amenities" Type="String" MaxLength="7000" FixedLength="false" Unicode="false" />
+          <Property Name="amenitiesSize" Type="String" MaxLength="7000" FixedLength="false" Unicode="false" />
+          <Property Name="maidService" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="listingID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="amenityFee">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="items" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="fees" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="feeTypes" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="listingID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="attractionsTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="attractions" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+          <Property Name="distances" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+          <Property Name="distanceTypes" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="listingID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="billingsTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="planID" Type="Int32" />
+          <Property Name="listingSize" Type="Int32" />
+          <Property Name="listingIDs" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
+          <Property Name="months" Type="Int32" />
+          <Property Name="discount" Type="Double" />
+          <Property Name="price" Type="Double" />
+          <Property Name="promotionCode" Type="Int32" />
+          <Property Name="ownerID" Type="Int32" Nullable="false" />
+          <Property Name="paymentStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="order_number" Type="Int32" />
+          <Property Name="currency_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="invoice_id" Type="Int32" />
+          <Property Name="li_0_price" Type="Double" />
+          <Property Name="total" Type="Double" />
+          <Property Name="credit_card_processed" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="pay_method" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="country" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ip_country" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="first_name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="last_name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="card_holder_name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="state" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="city" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="address2" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="postalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="phoneExtension" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="date" Type="DateTime" Precision="3" />
+          <Property Name="Payment_reference_Id" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="Payment_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ListingPrice" Type="Int32" />
+        </EntityType>
+        <EntityType Name="citiesTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="type" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="contactsTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="firstName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="lastName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="image" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="imageShow" Type="Boolean" Nullable="false" />
+          <Property Name="address" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="zip" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="continent" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="country" Type="Int32" />
+          <Property Name="state" Type="Int32" />
+          <Property Name="region" Type="Int32" />
+          <Property Name="city" Type="Int32" />
+          <Property Name="primaryPhone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="alternatePhone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="callTime" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="fax" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="timeZone" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="language" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="aboutMe" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="ownerID" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="Boolean" Nullable="false" />
+          <Property Name="profileCount" Type="Int32" />
+        </EntityType>
+        <EntityType Name="countriesTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="type" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="DomainName">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DomainName1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="enquiryTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="country" Type="Int32" />
+          <Property Name="phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="arrival" Type="DateTime" Precision="0" />
+          <Property Name="departure" Type="DateTime" Precision="0" />
+          <Property Name="adults" Type="Int32" />
+          <Property Name="children" Type="Int32" />
+          <Property Name="message" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="listingID" Type="Int32" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="facilitiesData">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="facilitiesItemsData">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="type" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="listingsImagesTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="image" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="title" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="defaultImage" Type="Boolean" />
+          <Property Name="orderNo" Type="Int32" />
+          <Property Name="type" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ownersTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="email" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="status" Type="Boolean" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="policiesTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="paymentPolicy" Type="String" MaxLength="1500" FixedLength="false" Unicode="false" />
+          <Property Name="callectionPolicy" Type="String" MaxLength="1500" FixedLength="false" Unicode="false" />
+          <Property Name="rules" Type="String" MaxLength="1500" FixedLength="false" Unicode="false" />
+          <Property Name="listingID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="promotionsTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="planID" Type="Int32" />
+          <Property Name="code" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="discount" Type="Int32" />
+          <Property Name="months" Type="Int32" />
+          <Property Name="amount" Type="Double" />
+          <Property Name="startDate" Type="DateTime" Precision="3" />
+          <Property Name="endDate" Type="DateTime" Precision="3" />
+          <Property Name="title" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="1500" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="ratesDataTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="beginDate" Type="DateTime" Precision="3" />
+          <Property Name="endDate" Type="DateTime" Precision="3" />
+          <Property Name="weekNight" Type="Double" />
+          <Property Name="weekendNight" Type="Double" />
+          <Property Name="weekly" Type="Double" />
+          <Property Name="monthly" Type="Double" />
+          <Property Name="listingID" Type="Int32" Nullable="false" />
+          <Property Name="weekNightTemp" Type="Double" Nullable="false" />
+          <Property Name="weekendNightTemp" Type="Double" Nullable="false" />
+          <Property Name="weeklyTemp" Type="Double" Nullable="false" />
+          <Property Name="monthlyTemp" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ratesTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="currency" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="standardOccupancy" Type="Int32" />
+          <Property Name="maxOccupancy" Type="Int32" />
+          <Property Name="extraPersonRate" Type="Int32" />
+          <Property Name="checkInTime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="checkOutTime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="paymentOptions" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="describeRates" Type="String" MaxLength="700" FixedLength="false" Unicode="false" />
+          <Property Name="listingID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="regionsTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="type" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="reviewsTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="review" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="rating" Type="Double" />
+          <Property Name="arrivalDate" Type="DateTime" Precision="0" />
+          <Property Name="listingID" Type="Int32" Nullable="false" />
+          <Property Name="travelerID" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="status" Type="Boolean" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="roomsTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="type" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="floor" Type="Int32" />
+          <Property Name="entrance" Type="Int32" />
+          <Property Name="description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="listingID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="statesTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="type" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_continents">
+          <Key>
+            <PropertyRef Name="continentId" />
+          </Key>
+          <Property Name="continentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="continent" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="travelersTable">
+          <Key>
+            <PropertyRef Name="email" />
+          </Key>
+          <Property Name="email" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="nickname" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="country" Type="Int32" />
+          <Property Name="address" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="listings" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="Boolean" Nullable="false" />
+          <Property Name="addDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="updateDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="userdetail">
+          <Key>
+            <PropertyRef Name="userid" />
+          </Key>
+          <Property Name="userid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="loginid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="roal" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="status" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="usersTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="type" Type="Int32" Nullable="false" />
+          <Property Name="code" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="status" Type="Boolean" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="updateDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="availabilityTable">
+          <Key>
+            <PropertyRef Name="listingID" />
+          </Key>
+          <Property Name="date" Type="DateTime" Precision="3" />
+          <Property Name="type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="listingID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BlogComment">
+          <Key>
+            <PropertyRef Name="CommentID" />
+          </Key>
+          <Property Name="CommentID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BlogID" Type="Int64" />
+          <Property Name="Commant" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Byte" />
+          <Property Name="CommentOn" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CommentBy" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="DataAdded" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="listingsTable">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="status" />
+            <PropertyRef Name="date" />
+            <PropertyRef Name="dateUpdate" />
+            <PropertyRef Name="addedBy" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="continent" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="country" Type="Int32" />
+          <Property Name="state" Type="Int32" />
+          <Property Name="region" Type="Int32" />
+          <Property Name="city" Type="Int32" />
+          <Property Name="address" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="zip" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="latitude" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="longitude" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="bedrooms" Type="Int32" />
+          <Property Name="sleeps" Type="Int32" />
+          <Property Name="bathrooms" Type="Decimal" Precision="18" Scale="1" />
+          <Property Name="minStay" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="propertyType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="locationType" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="entrance" Type="Int32" />
+          <Property Name="timeZone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="6000" FixedLength="false" Unicode="false" />
+          <Property Name="paymentStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="coastBeach" Type="String" MaxLength="600" FixedLength="false" Unicode="false" />
+          <Property Name="golf" Type="String" MaxLength="600" FixedLength="false" Unicode="false" />
+          <Property Name="specialInterest" Type="String" MaxLength="600" FixedLength="false" Unicode="false" />
+          <Property Name="howReachThere" Type="String" MaxLength="600" FixedLength="false" Unicode="false" />
+          <Property Name="featured" Type="Boolean" />
+          <Property Name="topTen" Type="Boolean" />
+          <Property Name="metaTitle" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="metaKeyword" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="metaDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="Boolean" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="dateUpdate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="addedBy" Type="Int32" Nullable="false" />
+          <Property Name="roomDescription" Type="String" MaxLength="6000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PageDetail">
+          <Key>
+            <PropertyRef Name="PID" />
+            <PropertyRef Name="DomainID" />
+            <PropertyRef Name="PageName" />
+            <PropertyRef Name="Title" />
+            <PropertyRef Name="Keywords" />
+            <PropertyRef Name="Description" />
+            <PropertyRef Name="Dated" />
+          </Key>
+          <Property Name="PID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DomainID" Type="Int32" Nullable="false" />
+          <Property Name="PageName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Keywords" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Dated" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="PostBlog">
+          <Key>
+            <PropertyRef Name="BlogID" />
+          </Key>
+          <Property Name="BlogID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BlogTitle" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="BlogSDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="BlogBody" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PageKeword" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="PageDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="IsPublish" Type="Byte" />
+          <Property Name="IsActive" Type="Byte" />
+          <Property Name="DateAdded" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityContainer Name="RentalHolidayEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="amenitiesTables" EntityType="Self.amenitiesTable" />
+          <EntitySet Name="amenityFees" EntityType="Self.amenityFee" />
+          <EntitySet Name="attractionsTables" EntityType="Self.attractionsTable" />
+          <EntitySet Name="billingsTables" EntityType="Self.billingsTable" />
+          <EntitySet Name="citiesTables" EntityType="Self.citiesTable" />
+          <EntitySet Name="contactsTables" EntityType="Self.contactsTable" />
+          <EntitySet Name="countriesTables" EntityType="Self.countriesTable" />
+          <EntitySet Name="DomainNames" EntityType="Self.DomainName" />
+          <EntitySet Name="enquiryTables" EntityType="Self.enquiryTable" />
+          <EntitySet Name="facilitiesDatas" EntityType="Self.facilitiesData" />
+          <EntitySet Name="facilitiesItemsDatas" EntityType="Self.facilitiesItemsData" />
+          <EntitySet Name="listingsImagesTables" EntityType="Self.listingsImagesTable" />
+          <EntitySet Name="ownersTables" EntityType="Self.ownersTable" />
+          <EntitySet Name="policiesTables" EntityType="Self.policiesTable" />
+          <EntitySet Name="promotionsTables" EntityType="Self.promotionsTable" />
+          <EntitySet Name="ratesDataTables" EntityType="Self.ratesDataTable" />
+          <EntitySet Name="ratesTables" EntityType="Self.ratesTable" />
+          <EntitySet Name="regionsTables" EntityType="Self.regionsTable" />
+          <EntitySet Name="reviewsTables" EntityType="Self.reviewsTable" />
+          <EntitySet Name="roomsTables" EntityType="Self.roomsTable" />
+          <EntitySet Name="statesTables" EntityType="Self.statesTable" />
+          <EntitySet Name="tbl_continents" EntityType="Self.tbl_continents" />
+          <EntitySet Name="travelersTables" EntityType="Self.travelersTable" />
+          <EntitySet Name="userdetails" EntityType="Self.userdetail" />
+          <EntitySet Name="usersTables" EntityType="Self.usersTable" />
+          <EntitySet Name="availabilityTables" EntityType="Self.availabilityTable" />
+          <EntitySet Name="BlogComments" EntityType="Self.BlogComment" />
+          <EntitySet Name="listingsTables" EntityType="Self.listingsTable" />
+          <EntitySet Name="PageDetails" EntityType="Self.PageDetail" />
+          <EntitySet Name="PostBlogs" EntityType="Self.PostBlog" />
+          <FunctionImport Name="adddomain">
+            <Parameter Name="domainname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="addPage">
+            <Parameter Name="domainid" Mode="In" Type="Int32" />
+            <Parameter Name="pagename" Mode="In" Type="String" />
+            <Parameter Name="title" Mode="In" Type="String" />
+            <Parameter Name="keyword" Mode="In" Type="String" />
+            <Parameter Name="description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="adduser">
+            <Parameter Name="loginid" Mode="In" Type="String" />
+            <Parameter Name="pwd" Mode="In" Type="String" />
+            <Parameter Name="roal" Mode="In" Type="String" />
+            <Parameter Name="status" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DeletePageDetail">
+            <Parameter Name="Pid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllDomainName" ReturnType="Collection(RentalHolidayModel.GetAllDomainName_Result)" />
+          <FunctionImport Name="GetAllpageDetailbyDid" ReturnType="Collection(RentalHolidayModel.GetAllpageDetailbyDid_Result)">
+            <Parameter Name="did" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="getalluserdetail" ReturnType="Collection(RentalHolidayModel.getalluserdetail_Result)" />
+          <FunctionImport Name="GetpageDetailbyPid" ReturnType="Collection(RentalHolidayModel.GetpageDetailbyPid_Result)">
+            <Parameter Name="Pid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Insert_AmenitiesTable">
+            <Parameter Name="amenities" Mode="In" Type="String" />
+            <Parameter Name="amenitiesSize" Mode="In" Type="String" />
+            <Parameter Name="maidService" Mode="In" Type="String" />
+            <Parameter Name="listingID" Mode="In" Type="Int32" />
+            <Parameter Name="Id" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Insert_AmenityFee">
+            <Parameter Name="items" Mode="In" Type="String" />
+            <Parameter Name="fees" Mode="In" Type="String" />
+            <Parameter Name="feeTypes" Mode="In" Type="String" />
+            <Parameter Name="listingID" Mode="In" Type="Int32" />
+            <Parameter Name="Id" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Insert_attractionsTable">
+            <Parameter Name="attractions" Mode="In" Type="String" />
+            <Parameter Name="distances" Mode="In" Type="String" />
+            <Parameter Name="distanceTypes" Mode="In" Type="String" />
+            <Parameter Name="description" Mode="In" Type="String" />
+            <Parameter Name="listingID" Mode="In" Type="Int32" />
+            <Parameter Name="Id" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Insert_billingsTable">
+            <Parameter Name="planID" Mode="In" Type="Int32" />
+            <Parameter Name="listingSize" Mode="In" Type="Int32" />
+            <Parameter Name="listingIDs" Mode="In" Type="String" />
+            <Parameter Name="months" Mode="In" Type="Int32" />
+            <Parameter Name="discount" Mode="In" Type="Double" />
+            <Parameter Name="ListingPrice" Mode="In" Type="Int32" />
+            <Parameter Name="price" Mode="In" Type="Double" />
+            <Parameter Name="promotionCode" Mode="In" Type="Int32" />
+            <Parameter Name="ownerID" Mode="In" Type="Int32" />
+            <Parameter Name="paymentStatus" Mode="In" Type="String" />
+            <Parameter Name="country" Mode="In" Type="String" />
+            <Parameter Name="card_holder_name" Mode="In" Type="String" />
+            <Parameter Name="state" Mode="In" Type="String" />
+            <Parameter Name="city" Mode="In" Type="String" />
+            <Parameter Name="address" Mode="In" Type="String" />
+            <Parameter Name="address2" Mode="In" Type="String" />
+            <Parameter Name="postalCode" Mode="In" Type="String" />
+            <Parameter Name="phone" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="date" Mode="In" Type="DateTime" />
+            <Parameter Name="Payment_reference_Id" Mode="In" Type="String" />
+            <Parameter Name="Payment_type" Mode="In" Type="String" />
+            <Parameter Name="Id" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Insert_ListingTable">
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="continent" Mode="In" Type="String" />
+            <Parameter Name="country" Mode="In" Type="Int32" />
+            <Parameter Name="state" Mode="In" Type="Int32" />
+            <Parameter Name="region" Mode="In" Type="Int32" />
+            <Parameter Name="city" Mode="In" Type="Int32" />
+            <Parameter Name="address" Mode="In" Type="String" />
+            <Parameter Name="zip" Mode="In" Type="String" />
+            <Parameter Name="latitude" Mode="In" Type="String" />
+            <Parameter Name="longitude" Mode="In" Type="String" />
+            <Parameter Name="bedrooms" Mode="In" Type="Int32" />
+            <Parameter Name="bathrooms" Mode="In" Type="Decimal" />
+            <Parameter Name="minStay" Mode="In" Type="String" />
+            <Parameter Name="propertyType" Mode="In" Type="String" />
+            <Parameter Name="locationType" Mode="In" Type="String" />
+            <Parameter Name="entrance" Mode="In" Type="Int32" />
+            <Parameter Name="timeZone" Mode="In" Type="String" />
+            <Parameter Name="description" Mode="In" Type="String" />
+            <Parameter Name="paymentStatus" Mode="In" Type="String" />
+            <Parameter Name="status" Mode="In" Type="Boolean" />
+            <Parameter Name="date" Mode="In" Type="DateTime" />
+            <Parameter Name="dateUpdate" Mode="In" Type="DateTime" />
+            <Parameter Name="addedBy" Mode="In" Type="Int32" />
+            <Parameter Name="roomDescription" Mode="In" Type="String" />
+            <Parameter Name="metaTitle" Mode="In" Type="String" />
+            <Parameter Name="metaKeyword" Mode="In" Type="String" />
+            <Parameter Name="metaDescription" Mode="In" Type="String" />
+            <Parameter Name="coastBeach" Mode="In" Type="String" />
+            <Parameter Name="golf" Mode="In" Type="String" />
+            <Parameter Name="specialInterest" Mode="In" Type="String" />
+            <Parameter Name="howReachThere" Mode="In" Type="String" />
+            <Parameter Name="featured" Mode="In" Type="Boolean" />
+            <Parameter Name="topTen" Mode="In" Type="Boolean" />
+            <Parameter Name="sleeps" Mode="In" Type="Int32" />
+            <Parameter Name="Id" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Insert_policiesTable">
+            <Parameter Name="paymentPolicy" Mode="In" Type="String" />
+            <Parameter Name="callectionPolicy" Mode="In" Type="String" />
+            <Parameter Name="rules" Mode="In" Type="String" />
+            <Parameter Name="listingID" Mode="In" Type="Int32" />
+            <Parameter Name="Id" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Insert_ratesDataTable">
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="beginDate" Mode="In" Type="DateTime" />
+            <Parameter Name="endDate" Mode="In" Type="DateTime" />
+            <Parameter Name="weekNight" Mode="In" Type="Double" />
+            <Parameter Name="weekendNight" Mode="In" Type="Double" />
+            <Parameter Name="weekly" Mode="In" Type="Double" />
+            <Parameter Name="monthly" Mode="In" Type="Double" />
+            <Parameter Name="weekNightTemp" Mode="In" Type="Double" />
+            <Parameter Name="weekendNightTemp" Mode="In" Type="Double" />
+            <Parameter Name="weeklyTemp" Mode="In" Type="Double" />
+            <Parameter Name="monthlyTemp" Mode="In" Type="Double" />
+            <Parameter Name="listingID" Mode="In" Type="Int32" />
+            <Parameter Name="Id" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Insert_ratesTable">
+            <Parameter Name="currency" Mode="In" Type="String" />
+            <Parameter Name="standardOccupancy" Mode="In" Type="Int32" />
+            <Parameter Name="maxOccupancy" Mode="In" Type="Int32" />
+            <Parameter Name="extraPersonRate" Mode="In" Type="Int32" />
+            <Parameter Name="checkInTime" Mode="In" Type="String" />
+            <Parameter Name="checkOutTime" Mode="In" Type="String" />
+            <Parameter Name="paymentOptions" Mode="In" Type="String" />
+            <Parameter Name="describeRates" Mode="In" Type="String" />
+            <Parameter Name="listingID" Mode="In" Type="Int32" />
+            <Parameter Name="Id" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Search_Area" ReturnType="Collection(RentalHolidayModel.sp_Search_Area_Result)">
+            <Parameter Name="Keywords" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Update_AmenitiesTable">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="amenities" Mode="In" Type="String" />
+            <Parameter Name="amenitiesSize" Mode="In" Type="String" />
+            <Parameter Name="maidService" Mode="In" Type="String" />
+            <Parameter Name="listingID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Update_AmenityFee">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="items" Mode="In" Type="String" />
+            <Parameter Name="fees" Mode="In" Type="String" />
+            <Parameter Name="feeTypes" Mode="In" Type="String" />
+            <Parameter Name="listingID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Update_attractionsTable">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="attractions" Mode="In" Type="String" />
+            <Parameter Name="distances" Mode="In" Type="String" />
+            <Parameter Name="distanceTypes" Mode="In" Type="String" />
+            <Parameter Name="description" Mode="In" Type="String" />
+            <Parameter Name="listingID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Update_ListingTable">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="continent" Mode="In" Type="String" />
+            <Parameter Name="country" Mode="In" Type="Int32" />
+            <Parameter Name="state" Mode="In" Type="Int32" />
+            <Parameter Name="region" Mode="In" Type="Int32" />
+            <Parameter Name="city" Mode="In" Type="Int32" />
+            <Parameter Name="address" Mode="In" Type="String" />
+            <Parameter Name="zip" Mode="In" Type="String" />
+            <Parameter Name="latitude" Mode="In" Type="String" />
+            <Parameter Name="longitude" Mode="In" Type="String" />
+            <Parameter Name="bedrooms" Mode="In" Type="Int32" />
+            <Parameter Name="bathrooms" Mode="In" Type="Decimal" />
+            <Parameter Name="minStay" Mode="In" Type="String" />
+            <Parameter Name="propertyType" Mode="In" Type="String" />
+            <Parameter Name="locationType" Mode="In" Type="String" />
+            <Parameter Name="entrance" Mode="In" Type="Int32" />
+            <Parameter Name="timeZone" Mode="In" Type="String" />
+            <Parameter Name="description" Mode="In" Type="String" />
+            <Parameter Name="paymentStatus" Mode="In" Type="String" />
+            <Parameter Name="status" Mode="In" Type="Boolean" />
+            <Parameter Name="date" Mode="In" Type="DateTime" />
+            <Parameter Name="dateUpdate" Mode="In" Type="DateTime" />
+            <Parameter Name="roomDescription" Mode="In" Type="String" />
+            <Parameter Name="metaTitle" Mode="In" Type="String" />
+            <Parameter Name="metaKeyword" Mode="In" Type="String" />
+            <Parameter Name="metaDescription" Mode="In" Type="String" />
+            <Parameter Name="coastBeach" Mode="In" Type="String" />
+            <Parameter Name="golf" Mode="In" Type="String" />
+            <Parameter Name="specialInterest" Mode="In" Type="String" />
+            <Parameter Name="howReachThere" Mode="In" Type="String" />
+            <Parameter Name="featured" Mode="In" Type="Boolean" />
+            <Parameter Name="topTen" Mode="In" Type="Boolean" />
+            <Parameter Name="sleeps" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Update_policiesTable">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="paymentPolicy" Mode="In" Type="String" />
+            <Parameter Name="callectionPolicy" Mode="In" Type="String" />
+            <Parameter Name="rules" Mode="In" Type="String" />
+            <Parameter Name="listingID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Update_ratesDataTable">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="beginDate" Mode="In" Type="DateTime" />
+            <Parameter Name="endDate" Mode="In" Type="DateTime" />
+            <Parameter Name="weekNight" Mode="In" Type="Double" />
+            <Parameter Name="weekendNight" Mode="In" Type="Double" />
+            <Parameter Name="weekly" Mode="In" Type="Double" />
+            <Parameter Name="monthly" Mode="In" Type="Double" />
+            <Parameter Name="weekNightTemp" Mode="In" Type="Double" />
+            <Parameter Name="weekendNightTemp" Mode="In" Type="Double" />
+            <Parameter Name="weeklyTemp" Mode="In" Type="Double" />
+            <Parameter Name="monthlyTemp" Mode="In" Type="Double" />
+            <Parameter Name="listingID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Update_ratesTable">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="currency" Mode="In" Type="String" />
+            <Parameter Name="standardOccupancy" Mode="In" Type="Int32" />
+            <Parameter Name="maxOccupancy" Mode="In" Type="Int32" />
+            <Parameter Name="extraPersonRate" Mode="In" Type="Int32" />
+            <Parameter Name="checkInTime" Mode="In" Type="String" />
+            <Parameter Name="checkOutTime" Mode="In" Type="String" />
+            <Parameter Name="paymentOptions" Mode="In" Type="String" />
+            <Parameter Name="describeRates" Mode="In" Type="String" />
+            <Parameter Name="listingID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="updatePage">
+            <Parameter Name="pageid" Mode="In" Type="Int32" />
+            <Parameter Name="domainid" Mode="In" Type="Int32" />
+            <Parameter Name="pagename" Mode="In" Type="String" />
+            <Parameter Name="title" Mode="In" Type="String" />
+            <Parameter Name="keyword" Mode="In" Type="String" />
+            <Parameter Name="description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usptBlogComment" ReturnType="Collection(RentalHolidayModel.usptBlogComment_Result)">
+            <Parameter Name="uType" Mode="In" Type="String" />
+            <Parameter Name="CommentID" Mode="In" Type="Int64" />
+            <Parameter Name="BlogID" Mode="In" Type="Int64" />
+            <Parameter Name="Commant" Mode="In" Type="String" />
+            <Parameter Name="IsActive" Mode="In" Type="Byte" />
+            <Parameter Name="CommentOn" Mode="In" Type="String" />
+            <Parameter Name="CommentBy" Mode="In" Type="String" />
+            <Parameter Name="DataAdded" Mode="In" Type="DateTime" />
+            <Parameter Name="PageName" Mode="In" Type="String" />
+            <Parameter Name="ClsName" Mode="In" Type="String" />
+            <Parameter Name="FnName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usptPostBlog" ReturnType="Collection(RentalHolidayModel.usptPostBlog_Result)">
+            <Parameter Name="uType" Mode="In" Type="String" />
+            <Parameter Name="BlogID" Mode="In" Type="Int64" />
+            <Parameter Name="BlogTitle" Mode="In" Type="String" />
+            <Parameter Name="BlogSDescription" Mode="In" Type="String" />
+            <Parameter Name="BlogBody" Mode="In" Type="String" />
+            <Parameter Name="PageKeword" Mode="In" Type="String" />
+            <Parameter Name="PageDescription" Mode="In" Type="String" />
+            <Parameter Name="IsPublish" Mode="In" Type="Byte" />
+            <Parameter Name="IsActive" Mode="In" Type="Byte" />
+            <Parameter Name="DateAdded" Mode="In" Type="DateTime" />
+            <Parameter Name="PageName" Mode="In" Type="String" />
+            <Parameter Name="ClsName" Mode="In" Type="String" />
+            <Parameter Name="FnName" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="GetAllDomainName_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="DomainName" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetAllpageDetailbyDid_Result">
+          <Property Type="Int32" Name="PID" Nullable="false" />
+          <Property Type="Int32" Name="DomainID" Nullable="false" />
+          <Property Type="String" Name="PageName" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="150" />
+          <Property Type="String" Name="Keywords" Nullable="false" MaxLength="300" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="500" />
+          <Property Type="DateTime" Name="Dated" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="getalluserdetail_Result">
+          <Property Type="Int32" Name="userid" Nullable="false" />
+          <Property Type="String" Name="loginid" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="password" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="roal" Nullable="false" MaxLength="20" />
+          <Property Type="Int32" Name="status" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetpageDetailbyPid_Result">
+          <Property Type="Int32" Name="PID" Nullable="false" />
+          <Property Type="Int32" Name="DomainID" Nullable="false" />
+          <Property Type="String" Name="PageName" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="150" />
+          <Property Type="String" Name="Keywords" Nullable="false" MaxLength="300" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="500" />
+          <Property Type="DateTime" Name="Dated" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="sp_Search_Area_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="country" Nullable="true" MaxLength="80" />
+        </ComplexType>
+        <ComplexType Name="usptBlogComment_Result">
+          <Property Type="Int32" Name="Result" Nullable="false" />
+          <Property Type="Int64" Name="CommentID" Nullable="false" />
+          <Property Type="Int64" Name="BlogID" Nullable="true" />
+          <Property Type="String" Name="Commant" Nullable="true" MaxLength="Max" />
+          <Property Type="Byte" Name="IsActive" Nullable="true" />
+          <Property Type="String" Name="CommentOn" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="CommentBy" Nullable="true" MaxLength="500" />
+          <Property Type="DateTime" Name="DataAdded" Nullable="true" Precision="16" />
+        </ComplexType>
+        <ComplexType Name="usptPostBlog_Result">
+          <Property Type="Int32" Name="Result" Nullable="false" />
+          <Property Type="Int64" Name="BlogID" Nullable="false" />
+          <Property Type="String" Name="BlogTitle" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="BlogSDescription" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="BlogBody" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="PageKeword" Nullable="true" MaxLength="300" />
+          <Property Type="String" Name="PageDescription" Nullable="true" MaxLength="500" />
+          <Property Type="Byte" Name="IsPublish" Nullable="true" />
+          <Property Type="Byte" Name="IsActive" Nullable="true" />
+          <Property Type="DateTime" Name="DateAdded" Nullable="true" Precision="16" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RentalHolidayModelStoreContainer" CdmEntityContainer="RentalHolidayEntities">
+          <EntitySetMapping Name="amenitiesTables">
+            <EntityTypeMapping TypeName="RentalHolidayModel.amenitiesTable">
+              <MappingFragment StoreEntitySet="amenitiesTable">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="amenities" ColumnName="amenities" />
+                <ScalarProperty Name="amenitiesSize" ColumnName="amenitiesSize" />
+                <ScalarProperty Name="maidService" ColumnName="maidService" />
+                <ScalarProperty Name="listingID" ColumnName="listingID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="amenityFees">
+            <EntityTypeMapping TypeName="RentalHolidayModel.amenityFee">
+              <MappingFragment StoreEntitySet="amenityFee">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="items" ColumnName="items" />
+                <ScalarProperty Name="fees" ColumnName="fees" />
+                <ScalarProperty Name="feeTypes" ColumnName="feeTypes" />
+                <ScalarProperty Name="listingID" ColumnName="listingID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="attractionsTables">
+            <EntityTypeMapping TypeName="RentalHolidayModel.attractionsTable">
+              <MappingFragment StoreEntitySet="attractionsTable">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="attractions" ColumnName="attractions" />
+                <ScalarProperty Name="distances" ColumnName="distances" />
+                <ScalarProperty Name="distanceTypes" ColumnName="distanceTypes" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="listingID" ColumnName="listingID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="billingsTables">
+            <EntityTypeMapping TypeName="RentalHolidayModel.billingsTable">
+              <MappingFragment StoreEntitySet="billingsTable">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="planID" ColumnName="planID" />
+                <ScalarProperty Name="listingSize" ColumnName="listingSize" />
+                <ScalarProperty Name="listingIDs" ColumnName="listingIDs" />
+                <ScalarProperty Name="months" ColumnName="months" />
+                <ScalarProperty Name="discount" ColumnName="discount" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="promotionCode" ColumnName="promotionCode" />
+                <ScalarProperty Name="ownerID" ColumnName="ownerID" />
+                <ScalarProperty Name="paymentStatus" ColumnName="paymentStatus" />
+                <ScalarProperty Name="order_number" ColumnName="order_number" />
+                <ScalarProperty Name="currency_code" ColumnName="currency_code" />
+                <ScalarProperty Name="invoice_id" ColumnName="invoice_id" />
+                <ScalarProperty Name="li_0_price" ColumnName="li_0_price" />
+                <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="credit_card_processed" ColumnName="credit_card_processed" />
+                <ScalarProperty Name="pay_method" ColumnName="pay_method" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="ip_country" ColumnName="ip_country" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="card_holder_name" ColumnName="card_holder_name" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="address2" ColumnName="address2" />
+                <ScalarProperty Name="postalCode" ColumnName="postalCode" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="phoneExtension" ColumnName="phoneExtension" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="Payment_reference_Id" ColumnName="Payment_reference_Id" />
+                <ScalarProperty Name="Payment_type" ColumnName="Payment_type" />
+                <ScalarProperty Name="ListingPrice" ColumnName="ListingPrice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="citiesTables">
+            <EntityTypeMapping TypeName="RentalHolidayModel.citiesTable">
+              <MappingFragment StoreEntitySet="citiesTable">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="type" ColumnName="type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="contactsTables">
+            <EntityTypeMapping TypeName="RentalHolidayModel.contactsTable">
+              <MappingFragment StoreEntitySet="contactsTable">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="imageShow" ColumnName="imageShow" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="zip" ColumnName="zip" />
+                <ScalarProperty Name="continent" ColumnName="continent" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="region" ColumnName="region" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="primaryPhone" ColumnName="primaryPhone" />
+                <ScalarProperty Name="alternatePhone" ColumnName="alternatePhone" />
+                <ScalarProperty Name="callTime" ColumnName="callTime" />
+                <ScalarProperty Name="fax" ColumnName="fax" />
+                <ScalarProperty Name="timeZone" ColumnName="timeZone" />
+                <ScalarProperty Name="language" ColumnName="language" />
+                <ScalarProperty Name="aboutMe" ColumnName="aboutMe" />
+                <ScalarProperty Name="ownerID" ColumnName="ownerID" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="profileCount" ColumnName="profileCount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="countriesTables">
+            <EntityTypeMapping TypeName="RentalHolidayModel.countriesTable">
+              <MappingFragment StoreEntitySet="countriesTable">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="type" ColumnName="type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DomainNames">
+            <EntityTypeMapping TypeName="RentalHolidayModel.DomainName">
+              <MappingFragment StoreEntitySet="DomainName">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DomainName1" ColumnName="DomainName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="enquiryTables">
+            <EntityTypeMapping TypeName="RentalHolidayModel.enquiryTable">
+              <MappingFragment StoreEntitySet="enquiryTable">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="arrival" ColumnName="arrival" />
+                <ScalarProperty Name="departure" ColumnName="departure" />
+                <ScalarProperty Name="adults" ColumnName="adults" />
+                <ScalarProperty Name="children" ColumnName="children" />
+                <ScalarProperty Name="message" ColumnName="message" />
+                <ScalarProperty Name="listingID" ColumnName="listingID" />
+                <ScalarProperty Name="date" ColumnName="date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="facilitiesDatas">
+            <EntityTypeMapping TypeName="RentalHolidayModel.facilitiesData">
+              <MappingFragment StoreEntitySet="facilitiesData">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="type" ColumnName="type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="facilitiesItemsDatas">
+            <EntityTypeMapping TypeName="RentalHolidayModel.facilitiesItemsData">
+              <MappingFragment StoreEntitySet="facilitiesItemsData">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="type" ColumnName="type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="listingsImagesTables">
+            <EntityTypeMapping TypeName="RentalHolidayModel.listingsImagesTable">
+              <MappingFragment StoreEntitySet="listingsImagesTable">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="defaultImage" ColumnName="defaultImage" />
+                <ScalarProperty Name="orderNo" ColumnName="orderNo" />
+                <ScalarProperty Name="type" ColumnName="type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ownersTables">
+            <EntityTypeMapping TypeName="RentalHolidayModel.ownersTable">
+              <MappingFragment StoreEntitySet="ownersTable">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="date" ColumnName="date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="policiesTables">
+            <EntityTypeMapping TypeName="RentalHolidayModel.policiesTable">
+              <MappingFragment StoreEntitySet="policiesTable">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="paymentPolicy" ColumnName="paymentPolicy" />
+                <ScalarProperty Name="callectionPolicy" ColumnName="callectionPolicy" />
+                <ScalarProperty Name="rules" ColumnName="rules" />
+                <ScalarProperty Name="listingID" ColumnName="listingID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="promotionsTables">
+            <EntityTypeMapping TypeName="RentalHolidayModel.promotionsTable">
+              <MappingFragment StoreEntitySet="promotionsTable">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="planID" ColumnName="planID" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="discount" ColumnName="discount" />
+                <ScalarProperty Name="months" ColumnName="months" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="startDate" ColumnName="startDate" />
+                <ScalarProperty Name="endDate" ColumnName="endDate" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ratesDataTables">
+            <EntityTypeMapping TypeName="RentalHolidayModel.ratesDataTable">
+              <MappingFragment StoreEntitySet="ratesDataTable">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="beginDate" ColumnName="beginDate" />
+                <ScalarProperty Name="endDate" ColumnName="endDate" />
+                <ScalarProperty Name="weekNight" ColumnName="weekNight" />
+                <ScalarProperty Name="weekendNight" ColumnName="weekendNight" />
+                <ScalarProperty Name="weekly" ColumnName="weekly" />
+                <ScalarProperty Name="monthly" ColumnName="monthly" />
+                <ScalarProperty Name="listingID" ColumnName="listingID" />
+                <ScalarProperty Name="weekNightTemp" ColumnName="weekNightTemp" />
+                <ScalarProperty Name="weekendNightTemp" ColumnName="weekendNightTemp" />
+                <ScalarProperty Name="weeklyTemp" ColumnName="weeklyTemp" />
+                <ScalarProperty Name="monthlyTemp" ColumnName="monthlyTemp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ratesTables">
+            <EntityTypeMapping TypeName="RentalHolidayModel.ratesTable">
+              <MappingFragment StoreEntitySet="ratesTable">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="currency" ColumnName="currency" />
+                <ScalarProperty Name="standardOccupancy" ColumnName="standardOccupancy" />
+                <ScalarProperty Name="maxOccupancy" ColumnName="maxOccupancy" />
+                <ScalarProperty Name="extraPersonRate" ColumnName="extraPersonRate" />
+                <ScalarProperty Name="checkInTime" ColumnName="checkInTime" />
+                <ScalarProperty Name="checkOutTime" ColumnName="checkOutTime" />
+                <ScalarProperty Name="paymentOptions" ColumnName="paymentOptions" />
+                <ScalarProperty Name="describeRates" ColumnName="describeRates" />
+                <ScalarProperty Name="listingID" ColumnName="listingID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="regionsTables">
+            <EntityTypeMapping TypeName="RentalHolidayModel.regionsTable">
+              <MappingFragment StoreEntitySet="regionsTable">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="type" ColumnName="type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="reviewsTables">
+            <EntityTypeMapping TypeName="RentalHolidayModel.reviewsTable">
+              <MappingFragment StoreEntitySet="reviewsTable">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="review" ColumnName="review" />
+                <ScalarProperty Name="rating" ColumnName="rating" />
+                <ScalarProperty Name="arrivalDate" ColumnName="arrivalDate" />
+                <ScalarProperty Name="listingID" ColumnName="listingID" />
+                <ScalarProperty Name="travelerID" ColumnName="travelerID" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="date" ColumnName="date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="roomsTables">
+            <EntityTypeMapping TypeName="RentalHolidayModel.roomsTable">
+              <MappingFragment StoreEntitySet="roomsTable">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="floor" ColumnName="floor" />
+                <ScalarProperty Name="entrance" ColumnName="entrance" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="listingID" ColumnName="listingID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="statesTables">
+            <EntityTypeMapping TypeName="RentalHolidayModel.statesTable">
+              <MappingFragment StoreEntitySet="statesTable">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="type" ColumnName="type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_continents">
+            <EntityTypeMapping TypeName="RentalHolidayModel.tbl_continents">
+              <MappingFragment StoreEntitySet="tbl_continents">
+                <ScalarProperty Name="continentId" ColumnName="continentId" />
+                <ScalarProperty Name="continent" ColumnName="continent" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="travelersTables">
+            <EntityTypeMapping TypeName="RentalHolidayModel.travelersTable">
+              <MappingFragment StoreEntitySet="travelersTable">
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="nickname" ColumnName="nickname" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="listings" ColumnName="listings" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="addDate" ColumnName="addDate" />
+                <ScalarProperty Name="updateDate" ColumnName="updateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="userdetails">
+            <EntityTypeMapping TypeName="RentalHolidayModel.userdetail">
+              <MappingFragment StoreEntitySet="userdetail">
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="loginid" ColumnName="loginid" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="roal" ColumnName="roal" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usersTables">
+            <EntityTypeMapping TypeName="RentalHolidayModel.usersTable">
+              <MappingFragment StoreEntitySet="usersTable">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="updateDate" ColumnName="updateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="availabilityTables">
+            <EntityTypeMapping TypeName="RentalHolidayModel.availabilityTable">
+              <MappingFragment StoreEntitySet="availabilityTable">
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="listingID" ColumnName="listingID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BlogComments">
+            <EntityTypeMapping TypeName="RentalHolidayModel.BlogComment">
+              <MappingFragment StoreEntitySet="BlogComment">
+                <ScalarProperty Name="CommentID" ColumnName="CommentID" />
+                <ScalarProperty Name="BlogID" ColumnName="BlogID" />
+                <ScalarProperty Name="Commant" ColumnName="Commant" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CommentOn" ColumnName="CommentOn" />
+                <ScalarProperty Name="CommentBy" ColumnName="CommentBy" />
+                <ScalarProperty Name="DataAdded" ColumnName="DataAdded" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="listingsTables">
+            <EntityTypeMapping TypeName="RentalHolidayModel.listingsTable">
+              <MappingFragment StoreEntitySet="listingsTable">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="continent" ColumnName="continent" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="region" ColumnName="region" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="zip" ColumnName="zip" />
+                <ScalarProperty Name="latitude" ColumnName="latitude" />
+                <ScalarProperty Name="longitude" ColumnName="longitude" />
+                <ScalarProperty Name="bedrooms" ColumnName="bedrooms" />
+                <ScalarProperty Name="sleeps" ColumnName="sleeps" />
+                <ScalarProperty Name="bathrooms" ColumnName="bathrooms" />
+                <ScalarProperty Name="minStay" ColumnName="minStay" />
+                <ScalarProperty Name="propertyType" ColumnName="propertyType" />
+                <ScalarProperty Name="locationType" ColumnName="locationType" />
+                <ScalarProperty Name="entrance" ColumnName="entrance" />
+                <ScalarProperty Name="timeZone" ColumnName="timeZone" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="paymentStatus" ColumnName="paymentStatus" />
+                <ScalarProperty Name="coastBeach" ColumnName="coastBeach" />
+                <ScalarProperty Name="golf" ColumnName="golf" />
+                <ScalarProperty Name="specialInterest" ColumnName="specialInterest" />
+                <ScalarProperty Name="howReachThere" ColumnName="howReachThere" />
+                <ScalarProperty Name="featured" ColumnName="featured" />
+                <ScalarProperty Name="topTen" ColumnName="topTen" />
+                <ScalarProperty Name="metaTitle" ColumnName="metaTitle" />
+                <ScalarProperty Name="metaKeyword" ColumnName="metaKeyword" />
+                <ScalarProperty Name="metaDescription" ColumnName="metaDescription" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="dateUpdate" ColumnName="dateUpdate" />
+                <ScalarProperty Name="addedBy" ColumnName="addedBy" />
+                <ScalarProperty Name="roomDescription" ColumnName="roomDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PageDetails">
+            <EntityTypeMapping TypeName="RentalHolidayModel.PageDetail">
+              <MappingFragment StoreEntitySet="PageDetails">
+                <ScalarProperty Name="PID" ColumnName="PID" />
+                <ScalarProperty Name="DomainID" ColumnName="DomainID" />
+                <ScalarProperty Name="PageName" ColumnName="PageName" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Keywords" ColumnName="Keywords" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Dated" ColumnName="Dated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PostBlogs">
+            <EntityTypeMapping TypeName="RentalHolidayModel.PostBlog">
+              <MappingFragment StoreEntitySet="PostBlog">
+                <ScalarProperty Name="BlogID" ColumnName="BlogID" />
+                <ScalarProperty Name="BlogTitle" ColumnName="BlogTitle" />
+                <ScalarProperty Name="BlogSDescription" ColumnName="BlogSDescription" />
+                <ScalarProperty Name="BlogBody" ColumnName="BlogBody" />
+                <ScalarProperty Name="PageKeword" ColumnName="PageKeword" />
+                <ScalarProperty Name="PageDescription" ColumnName="PageDescription" />
+                <ScalarProperty Name="IsPublish" ColumnName="IsPublish" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="adddomain" FunctionName="RentalHolidayModel.Store.adddomain" />
+          <FunctionImportMapping FunctionImportName="addPage" FunctionName="RentalHolidayModel.Store.addPage" />
+          <FunctionImportMapping FunctionImportName="adduser" FunctionName="RentalHolidayModel.Store.adduser" />
+          <FunctionImportMapping FunctionImportName="DeletePageDetail" FunctionName="RentalHolidayModel.Store.DeletePageDetail" />
+          <FunctionImportMapping FunctionImportName="GetAllDomainName" FunctionName="RentalHolidayModel.Store.GetAllDomainName">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RentalHolidayModel.GetAllDomainName_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DomainName" ColumnName="DomainName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllpageDetailbyDid" FunctionName="RentalHolidayModel.Store.GetAllpageDetailbyDid">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RentalHolidayModel.GetAllpageDetailbyDid_Result">
+                <ScalarProperty Name="PID" ColumnName="PID" />
+                <ScalarProperty Name="DomainID" ColumnName="DomainID" />
+                <ScalarProperty Name="PageName" ColumnName="PageName" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Keywords" ColumnName="Keywords" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Dated" ColumnName="Dated" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getalluserdetail" FunctionName="RentalHolidayModel.Store.getalluserdetail">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RentalHolidayModel.getalluserdetail_Result">
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="loginid" ColumnName="loginid" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="roal" ColumnName="roal" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetpageDetailbyPid" FunctionName="RentalHolidayModel.Store.GetpageDetailbyPid">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RentalHolidayModel.GetpageDetailbyPid_Result">
+                <ScalarProperty Name="PID" ColumnName="PID" />
+                <ScalarProperty Name="DomainID" ColumnName="DomainID" />
+                <ScalarProperty Name="PageName" ColumnName="PageName" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Keywords" ColumnName="Keywords" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Dated" ColumnName="Dated" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Insert_AmenitiesTable" FunctionName="RentalHolidayModel.Store.sp_Insert_AmenitiesTable" />
+          <FunctionImportMapping FunctionImportName="sp_Insert_AmenityFee" FunctionName="RentalHolidayModel.Store.sp_Insert_AmenityFee" />
+          <FunctionImportMapping FunctionImportName="sp_Insert_attractionsTable" FunctionName="RentalHolidayModel.Store.sp_Insert_attractionsTable" />
+          <FunctionImportMapping FunctionImportName="sp_Insert_billingsTable" FunctionName="RentalHolidayModel.Store.sp_Insert_billingsTable" />
+          <FunctionImportMapping FunctionImportName="sp_Insert_ListingTable" FunctionName="RentalHolidayModel.Store.sp_Insert_ListingTable" />
+          <FunctionImportMapping FunctionImportName="sp_Insert_policiesTable" FunctionName="RentalHolidayModel.Store.sp_Insert_policiesTable" />
+          <FunctionImportMapping FunctionImportName="sp_Insert_ratesDataTable" FunctionName="RentalHolidayModel.Store.sp_Insert_ratesDataTable" />
+          <FunctionImportMapping FunctionImportName="sp_Insert_ratesTable" FunctionName="RentalHolidayModel.Store.sp_Insert_ratesTable" />
+          <FunctionImportMapping FunctionImportName="sp_Search_Area" FunctionName="RentalHolidayModel.Store.sp_Search_Area">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RentalHolidayModel.sp_Search_Area_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="country" ColumnName="country" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Update_AmenitiesTable" FunctionName="RentalHolidayModel.Store.sp_Update_AmenitiesTable" />
+          <FunctionImportMapping FunctionImportName="sp_Update_AmenityFee" FunctionName="RentalHolidayModel.Store.sp_Update_AmenityFee" />
+          <FunctionImportMapping FunctionImportName="sp_Update_attractionsTable" FunctionName="RentalHolidayModel.Store.sp_Update_attractionsTable" />
+          <FunctionImportMapping FunctionImportName="sp_Update_ListingTable" FunctionName="RentalHolidayModel.Store.sp_Update_ListingTable" />
+          <FunctionImportMapping FunctionImportName="sp_Update_policiesTable" FunctionName="RentalHolidayModel.Store.sp_Update_policiesTable" />
+          <FunctionImportMapping FunctionImportName="sp_Update_ratesDataTable" FunctionName="RentalHolidayModel.Store.sp_Update_ratesDataTable" />
+          <FunctionImportMapping FunctionImportName="sp_Update_ratesTable" FunctionName="RentalHolidayModel.Store.sp_Update_ratesTable" />
+          <FunctionImportMapping FunctionImportName="updatePage" FunctionName="RentalHolidayModel.Store.updatePage" />
+          <FunctionImportMapping FunctionImportName="usptBlogComment" FunctionName="RentalHolidayModel.Store.usptBlogComment">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RentalHolidayModel.usptBlogComment_Result">
+                <ScalarProperty Name="Result" ColumnName="Result" />
+                <ScalarProperty Name="CommentID" ColumnName="CommentID" />
+                <ScalarProperty Name="BlogID" ColumnName="BlogID" />
+                <ScalarProperty Name="Commant" ColumnName="Commant" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CommentOn" ColumnName="CommentOn" />
+                <ScalarProperty Name="CommentBy" ColumnName="CommentBy" />
+                <ScalarProperty Name="DataAdded" ColumnName="DataAdded" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usptPostBlog" FunctionName="RentalHolidayModel.Store.usptPostBlog">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RentalHolidayModel.usptPostBlog_Result">
+                <ScalarProperty Name="Result" ColumnName="Result" />
+                <ScalarProperty Name="BlogID" ColumnName="BlogID" />
+                <ScalarProperty Name="BlogTitle" ColumnName="BlogTitle" />
+                <ScalarProperty Name="BlogSDescription" ColumnName="BlogSDescription" />
+                <ScalarProperty Name="BlogBody" ColumnName="BlogBody" />
+                <ScalarProperty Name="PageKeword" ColumnName="PageKeword" />
+                <ScalarProperty Name="PageDescription" ColumnName="PageDescription" />
+                <ScalarProperty Name="IsPublish" ColumnName="IsPublish" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
